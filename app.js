@@ -1,16 +1,367 @@
 'use strict';
 
-// Edit this list to add or update projects. Descriptions are based on the supplied repository/profile PDFs.
+// Edit these groups and project records to update the portfolio.
+const projectGroups = [
+  {
+    "id": "foundation",
+    "name": "Foundation"
+  },
+  {
+    "id": "peripherals",
+    "name": "MCU Peripherals"
+  },
+  {
+    "id": "drivers",
+    "name": "Drivers & Debugging"
+  },
+  {
+    "id": "rtos",
+    "name": "RTOS"
+  },
+  {
+    "id": "protocols",
+    "name": "Protocols & IoT"
+  },
+  {
+    "id": "ml",
+    "name": "Embedded Machine Learning"
+  }
+];
 const projects = [
-  {id:'motionsense',name:'STM32 MotionSense',type:'ml',label:'EMBEDDED ML',repo:'stm32-motionsense',tags:['STM32','Embedded C','Python'],description:'From sensor motion to on-device classification. A bare-metal project connecting Python training with embedded deployment.',focus:['Bare-metal STM32 motion classification.','Python model training and deployment verification.','A workflow connecting sensor input, model development, and inference on the device.'],explore:'Explore the model workflow, firmware structure, and deployment notes in the repository.',visual:'motion'},
-  {id:'thermalpredict',name:'STM32 ThermalPredict',type:'ml',label:'SENSOR INTELLIGENCE',repo:'stm32-thermalpredict',tags:['BME280','Ridge regression','STM32'],description:'Temperature forecasting on STM32 using BME280 measurements, ridge regression, and on-device verification.',focus:['Temperature measurements using a BME280 sensor.','Ridge-regression temperature forecasting.','On-device verification of embedded deployment.'],explore:'Explore the sensor-to-model workflow and verification documentation.',visual:'thermal'},
-  {id:'allocator',name:'Memory, managed.',type:'firmware',label:'C / MEMORY MANAGEMENT',repo:'embedded-c-memory-allocator-',tags:['C','Memory pools','Testing'],description:'Three progressively developed memory allocators: fixed pools, a split/coalesce heap, and a hardened implementation.',focus:['Fixed-size memory-pool allocation.','General-purpose heap with block splitting and coalescing.','A hardened version with calloc/realloc, thread safety, and corruption detection, supported by tests and benchmarks.'],explore:'Explore the allocator versions, memory-bug demos, and test/benchmark code.',visual:'memory'},
-  {id:'hardfault',name:'Inside a HardFault',type:'firmware',label:'CORTEX-M4 / DEBUGGING',repo:'stm32_hardfault_debug',tags:['GDB','SWD','Cortex-M4'],description:'Investigating an STM32 fault through captured exception context, GDB/SWD, and an alignment-safe fix.',focus:['Cortex-M4 HardFault investigation.','Captured exception context and GDB/SWD debugging.','A documented alignment-safe fix and verification.'],explore:'Explore the fault investigation and the reasoning behind the fix.',visual:'debug'},
-  {id:'freertos',name:'Tasks, in real time.',type:'rtos',label:'REAL-TIME FIRMWARE',repo:'stm32_freertos_sensor_system',tags:['FreeRTOS','STM32','Sensors'],description:'A sensor-system project exploring FreeRTOS on STM32 and the structure of multitask embedded applications.',focus:['A FreeRTOS-based sensor-system project on STM32.','A practical exploration of real-time embedded software.','Part of my portfolio of sensor and scheduling projects.'],explore:'Explore the firmware and project documentation for implementation details.',visual:'rtos'},
-  {id:'hub',name:'One hub. Many interfaces.',type:'rtos',label:'SENSOR INTERFACES',repo:'stm32_multiprotocol_sensor_hub',tags:['STM32','Sensor hub','Interfaces'],description:'A sensor-hub project exploring multiple communication interfaces on an STM32 microcontroller.',focus:['STM32 firmware for a multi-protocol sensor hub.','Sensor integration and embedded communication interfaces.','A practical project connecting peripheral work into a system.'],explore:'Explore the repository for the interface implementation and hardware details.',visual:'hub'},
-  {id:'bootloader',name:'Before the application.',type:'firmware',label:'FIRMWARE / BOOTLOADERS',repo:'stm32_groundup_bootloader',tags:['C','Bootloader','STM32'],description:'A ground-up STM32 bootloader project, extending my exploration of firmware startup and update mechanisms.',focus:['A ground-up bootloader project for STM32.','Part of my firmware-development learning path.','Related work includes a separate UART bootloader repository.'],explore:'Explore the implementation, startup behavior, and repository documentation.',visual:'boot'},
-  {id:'scheduler',name:'A scheduler from scratch.',type:'rtos',label:'COOPERATIVE SCHEDULING',repo:'stm32_cooperative_scheduler',tags:['STM32','Scheduling','Firmware'],description:'A cooperative-scheduler project exploring how embedded tasks can share execution time.',focus:['Cooperative scheduling on STM32.','An exploration of task execution without relying on a full RTOS.','A complement to my FreeRTOS producer-consumer and sensor projects.'],explore:'Explore the source and scheduling implementation in the repository.',visual:'rtos'},
-  {id:'makefile',name:'Build it from the terminal.',type:'firmware',label:'FIRMWARE / BUILD SYSTEMS',repo:'stm32_makefile_project',tags:['Make','GCC','Embedded C'],description:'A multi-file STM32 C project with a handwritten Makefile, incremental builds, and command-line flashing.',focus:['A multi-file embedded C codebase.','A handwritten Makefile with incremental builds.','Command-line firmware flashing.'],explore:'Explore the build structure and documented command-line workflow.',visual:'build'}
+  {
+    "id": "allocator",
+    "name": "Custom Memory Allocator in C",
+    "type": "foundation",
+    "label": "C / MEMORY MANAGEMENT",
+    "repo": "embedded-c-memory-allocator-",
+    "tags": [
+      "C",
+      "Memory pools",
+      "Testing"
+    ],
+    "description": "Three progressively developed memory allocators: fixed pools, a split/coalesce heap, and a hardened implementation.",
+    "focus": [
+      "Fixed-size memory-pool allocation.",
+      "General-purpose heap with block splitting and coalescing.",
+      "A hardened version with calloc/realloc, thread safety, and corruption detection, supported by tests and benchmarks."
+    ],
+    "explore": "Explore the allocator versions, memory-bug demos, and test/benchmark code.",
+    "visual": "memory"
+  },
+  {
+    "id": "register-led",
+    "name": "Register-Level LED & Button Control",
+    "type": "foundation",
+    "label": "BARE-METAL FOUNDATIONS",
+    "repo": "stm32_register_led_button",
+    "tags": [
+      "STM32F407",
+      "Registers",
+      "GPIO"
+    ],
+    "description": "LED patterns and button input on STM32F407 using direct register access, without HAL.",
+    "focus": [
+      "Register-level STM32F407 programming.",
+      "Button debouncing, single/double clicks, and long-press detection.",
+      "LED patterns implemented without HAL."
+    ],
+    "visual": "gpio",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "makefile",
+    "name": "Makefile-Based C Build System",
+    "type": "foundation",
+    "label": "FIRMWARE / BUILD SYSTEMS",
+    "repo": "stm32_makefile_project",
+    "tags": [
+      "Make",
+      "GCC",
+      "Embedded C"
+    ],
+    "description": "A multi-file STM32 C project with a handwritten Makefile, incremental builds, and command-line flashing.",
+    "focus": [
+      "A multi-file embedded C codebase.",
+      "A handwritten Makefile with incremental builds.",
+      "Command-line firmware flashing."
+    ],
+    "explore": "Explore the build structure and documented command-line workflow.",
+    "visual": "build"
+  },
+  {
+    "id": "pwm",
+    "name": "PWM LED Dimmer",
+    "type": "peripherals",
+    "label": "TIMERS / PWM",
+    "repo": "stm32_pwm_led_dimmer",
+    "tags": [
+      "STM32",
+      "PWM",
+      "Timers"
+    ],
+    "description": "A PWM-based LED dimmer project on STM32.",
+    "focus": [
+      "An STM32 project focused on PWM LED brightness control.",
+      "Part of my hands-on microcontroller-peripheral portfolio."
+    ],
+    "visual": "pwm",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "dma",
+    "name": "DMA UART Echo",
+    "type": "peripherals",
+    "label": "DMA / UART",
+    "repo": "stm32_dma_uart_echo",
+    "tags": [
+      "STM32",
+      "DMA",
+      "UART"
+    ],
+    "description": "A UART echo project exploring DMA-based data transfer on STM32.",
+    "focus": [
+      "UART receive/transmit using DMA.",
+      "A practical exploration of microcontroller data-transfer peripherals."
+    ],
+    "visual": "uart",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "uart-bootloader",
+    "name": "UART Firmware Bootloader",
+    "type": "peripherals",
+    "label": "FIRMWARE UPDATES",
+    "repo": "stm32_uart_bootloader",
+    "tags": [
+      "STM32",
+      "UART",
+      "Bootloader"
+    ],
+    "description": "A custom STM32 bootloader project for firmware updates over UART.",
+    "focus": [
+      "Firmware updates over a UART interface.",
+      "Part of my exploration of bootloaders and embedded firmware."
+    ],
+    "visual": "boot",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "smart-led",
+    "name": "Smart LED Controller",
+    "type": "peripherals",
+    "label": "GPIO / PWM / FIRMWARE",
+    "repo": "stm32_smart_led_controller",
+    "tags": [
+      "STM32",
+      "PWM",
+      "Button input"
+    ],
+    "description": "An STM32 LED-controller project combining button input, PWM brightness, and bootloader-flashable firmware.",
+    "focus": [
+      "Button-controlled LED operation.",
+      "PWM brightness control.",
+      "Firmware designed for the bootloader workflow."
+    ],
+    "visual": "gpio",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "spi",
+    "name": "SPI LIS3DSH Sensor Driver",
+    "type": "drivers",
+    "label": "SPI / SENSOR DRIVER",
+    "repo": "stm32_spi_lis3dsh",
+    "tags": [
+      "STM32",
+      "SPI",
+      "LIS3DSH"
+    ],
+    "description": "An STM32 project exploring SPI communication with a LIS3DSH accelerometer.",
+    "focus": [
+      "SPI sensor interfacing on STM32.",
+      "A practical sensor-driver project in my embedded learning path."
+    ],
+    "visual": "hub",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "hardfault",
+    "name": "Cortex-M4 HardFault Debugging",
+    "type": "drivers",
+    "label": "CORTEX-M4 / DEBUGGING",
+    "repo": "stm32_hardfault_debug",
+    "tags": [
+      "GDB",
+      "SWD",
+      "Cortex-M4"
+    ],
+    "description": "Investigating an STM32 fault through captured exception context, GDB/SWD, and an alignment-safe fix.",
+    "focus": [
+      "Cortex-M4 HardFault investigation.",
+      "Captured exception context and GDB/SWD debugging.",
+      "A documented alignment-safe fix and verification."
+    ],
+    "explore": "Explore the fault investigation and the reasoning behind the fix.",
+    "visual": "debug"
+  },
+  {
+    "id": "bootloader",
+    "name": "Ground-Up STM32 Bootloader",
+    "type": "drivers",
+    "label": "FIRMWARE / BOOTLOADERS",
+    "repo": "stm32_groundup_bootloader",
+    "tags": [
+      "C",
+      "Bootloader",
+      "STM32"
+    ],
+    "description": "A ground-up STM32 bootloader project, extending my exploration of firmware startup and update mechanisms.",
+    "focus": [
+      "A ground-up bootloader project for STM32.",
+      "Part of my firmware-development learning path.",
+      "Related work includes a separate UART bootloader repository."
+    ],
+    "explore": "Explore the implementation, startup behavior, and repository documentation.",
+    "visual": "boot"
+  },
+  {
+    "id": "freertos",
+    "name": "FreeRTOS Sensor System",
+    "type": "rtos",
+    "label": "REAL-TIME FIRMWARE",
+    "repo": "stm32_freertos_sensor_system",
+    "tags": [
+      "FreeRTOS",
+      "STM32",
+      "Sensors"
+    ],
+    "description": "A sensor-system project exploring FreeRTOS on STM32 and the structure of multitask embedded applications.",
+    "focus": [
+      "A FreeRTOS-based sensor-system project on STM32.",
+      "A practical exploration of real-time embedded software.",
+      "Part of my portfolio of sensor and scheduling projects."
+    ],
+    "explore": "Explore the firmware and project documentation for implementation details.",
+    "visual": "rtos"
+  },
+  {
+    "id": "producer-consumer",
+    "name": "FreeRTOS Producer–Consumer",
+    "type": "rtos",
+    "label": "TASK COMMUNICATION",
+    "repo": "stm32_freertos_producer_consumer",
+    "tags": [
+      "STM32",
+      "FreeRTOS",
+      "Queues"
+    ],
+    "description": "A FreeRTOS producer–consumer project exploring communication between tasks on STM32.",
+    "focus": [
+      "Producer–consumer task communication.",
+      "A FreeRTOS project alongside my sensor-system and scheduler work."
+    ],
+    "visual": "rtos",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "scheduler",
+    "name": "Cooperative Scheduler",
+    "type": "rtos",
+    "label": "COOPERATIVE SCHEDULING",
+    "repo": "stm32_cooperative_scheduler",
+    "tags": [
+      "STM32",
+      "Scheduling",
+      "Firmware"
+    ],
+    "description": "A cooperative-scheduler project exploring how embedded tasks can share execution time.",
+    "focus": [
+      "Cooperative scheduling on STM32.",
+      "An exploration of task execution without relying on a full RTOS.",
+      "A complement to my FreeRTOS producer-consumer and sensor projects."
+    ],
+    "explore": "Explore the source and scheduling implementation in the repository.",
+    "visual": "rtos"
+  },
+  {
+    "id": "hub",
+    "name": "Multi-Protocol Sensor Hub",
+    "type": "protocols",
+    "label": "SENSOR INTERFACES",
+    "repo": "stm32_multiprotocol_sensor_hub",
+    "tags": [
+      "STM32",
+      "Sensor hub",
+      "Interfaces"
+    ],
+    "description": "A sensor-hub project exploring multiple communication interfaces on an STM32 microcontroller.",
+    "focus": [
+      "STM32 firmware for a multi-protocol sensor hub.",
+      "Sensor integration and embedded communication interfaces.",
+      "A practical project connecting peripheral work into a system."
+    ],
+    "explore": "Explore the repository for the interface implementation and hardware details.",
+    "visual": "hub"
+  },
+  {
+    "id": "motionsense",
+    "name": "STM32 MotionSense",
+    "type": "ml",
+    "label": "EMBEDDED ML",
+    "repo": "stm32-motionsense",
+    "tags": [
+      "STM32",
+      "Embedded C",
+      "Python"
+    ],
+    "description": "From sensor motion to on-device classification. A bare-metal project connecting Python training with embedded deployment.",
+    "focus": [
+      "Bare-metal STM32 motion classification.",
+      "Python model training and deployment verification.",
+      "A workflow connecting sensor input, model development, and inference on the device."
+    ],
+    "explore": "Explore the model workflow, firmware structure, and deployment notes in the repository.",
+    "visual": "motion"
+  },
+  {
+    "id": "machineguard",
+    "name": "STM32 MachineGuard Lite",
+    "type": "ml",
+    "label": "STM32 / MACHINEGUARD",
+    "repo": "stm32-machineguard-lite",
+    "tags": [
+      "STM32",
+      "C",
+      "MachineGuard"
+    ],
+    "description": "A further STM32 project in my embedded-systems portfolio.",
+    "focus": [
+      "A public STM32 repository included alongside my sensor and embedded-ML projects.",
+      "See the repository for its implementation and technical scope."
+    ],
+    "visual": "motion",
+    "explore": "Explore the source code and project documentation on GitHub."
+  },
+  {
+    "id": "thermalpredict",
+    "name": "STM32 ThermalPredict",
+    "type": "ml",
+    "label": "SENSOR INTELLIGENCE",
+    "repo": "stm32-thermalpredict",
+    "tags": [
+      "BME280",
+      "Ridge regression",
+      "STM32"
+    ],
+    "description": "Temperature forecasting on STM32 using BME280 measurements, ridge regression, and on-device verification.",
+    "focus": [
+      "Temperature measurements using a BME280 sensor.",
+      "Ridge-regression temperature forecasting.",
+      "On-device verification of embedded deployment."
+    ],
+    "explore": "Explore the sensor-to-model workflow and verification documentation.",
+    "visual": "thermal"
+  }
 ];
 
 const svgStart='<svg viewBox="0 0 360 195" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g stroke="#5b8051" stroke-width=".6" opacity=".35"><path d="M0 45h360M0 80h360M0 115h360M0 150h360M40 0v195M90 0v195M140 0v195M190 0v195M240 0v195M290 0v195M340 0v195"/></g>';
@@ -18,7 +369,18 @@ function visual(kind){
   const text=(x,y,s,c='#a9c596',size=9)=>`<text x="${x}" y="${y}" fill="${c}" font-family="monospace" font-size="${size}">${s}</text>`;
   const block=(x,y,w,h,s)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="#1d3724" stroke="#89b657"/>${text(x+9,y+h/2+3,s)}`;
   let body='';
-  if(kind==='motion'||kind==='thermal'){
+  if(kind==='gpio'){
+    body+=block(15,68,85,45,'BUTTON')+block(137,68,85,45,'GPIO');
+    body+='<path d="M100 90h37M222 90h37" stroke="#d4ff70" stroke-width="2"/><circle cx="286" cy="90" r="23" fill="#7baf46" stroke="#d4ff70" stroke-width="2"/><circle cx="286" cy="90" r="11" fill="#d4ff70"/>';
+    body+=text(275,135,'LED')+text(65,174,'INPUT / REGISTERS / OUTPUT');
+  }else if(kind==='pwm'){
+    body+='<path d="M20 126v-65h39v65h29V61h39v65h29V61h39v65h29V61h39v65h29V61h39v65" stroke="#d4ff70" stroke-width="2" fill="none"/>';
+    body+=text(35,169,'TIMER / DUTY CYCLE / LED BRIGHTNESS');
+  }else if(kind==='uart'){
+    body+=block(15,66,85,48,'UART RX')+block(137,66,85,48,'DMA')+block(259,66,85,48,'UART TX');
+    body+='<path d="M100 90h37M222 90h37" stroke="#d4ff70" stroke-width="2"/>';
+    body+=text(73,170,'RECEIVE / TRANSFER / ECHO');
+  }else if(kind==='motion'||kind==='thermal'){
     for(let n=0;n<(kind==='motion'?3:1);n++){
       let points='';for(let i=0;i<=70;i++){const x=15+i*4.7;const y=kind==='motion'?57+n*37+Math.sin(i*.55+n*2)*13*Math.sin(i*.09+n)+Math.cos(i*.19)*4:135-i*.9+Math.sin(i*.15)*13+Math.sin(i*1.7)*4;points+=`${x.toFixed(1)},${y.toFixed(1)} `;}
       body+=`<polyline fill="none" points="${points}" stroke="${['#d4ff70','#6fb986','#91a65c'][n]}" stroke-width="1.6"/>`;
@@ -55,7 +417,14 @@ function visual(kind){
 }
 
 const grid=document.getElementById('project-grid');
-grid.innerHTML=projects.map((p,i)=>`<article class="project-card reveal" data-category="${p.type}"><div class="project-visual"><span class="visual-label">${p.label}</span>${visual(p.visual)}<span class="visual-caption">ILLUSTRATIVE ${p.visual==='motion'||p.visual==='thermal'?'SIGNAL':'WORKFLOW'}</span></div><div class="project-body"><span class="project-index">${String(i+1).padStart(2,'0')} / ${p.label}</span><h3>${p.name}</h3><p>${p.description}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><button type="button" data-project="${p.id}" aria-label="Read project notes for ${p.name}">Project notes ↗</button><a href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} repository on GitHub">GitHub ↗</a></div></div></article>`).join('');
+function projectCard(p,i){return `<article class="project-card reveal" data-category="${p.type}"><div class="project-visual"><span class="visual-label">${p.label}</span>${visual(p.visual)}<span class="visual-caption">ILLUSTRATIVE ${p.visual==='motion'||p.visual==='thermal'?'SIGNAL':'WORKFLOW'}</span></div><div class="project-body"><span class="project-index">${String(i+1).padStart(2,'0')} / ${p.label}</span><h4>${p.name}</h4><p>${p.description}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><button type="button" data-project="${p.id}" aria-label="Read project notes for ${p.name}">Project notes ↗</button><a href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} repository on GitHub">GitHub ↗</a></div></div></article>`;}
+grid.innerHTML=projectGroups.map(group=>{
+  const items=projects.filter(p=>p.type===group.id);
+  return `<section class="project-group" data-group="${group.id}" aria-labelledby="group-${group.id}"><div class="project-group-heading"><h3 id="group-${group.id}">${group.name}</h3><span>${items.length} project${items.length===1?'':'s'}</span></div><div class="project-grid">${items.map(p=>projectCard(p,projects.indexOf(p))).join('')}</div></section>`;
+}).join('');
+document.querySelector('.filters').innerHTML=`<button class="selected" data-filter="all" aria-pressed="true">All work <span>${projects.length}</span></button>`+projectGroups.map(group=>`<button data-filter="${group.id}" aria-pressed="false">${group.name}</button>`).join('');
+document.getElementById('project-count').textContent=`${projects.length} projects`;
+
 
 const dialog=document.getElementById('project-dialog');
 let dialogTrigger;
@@ -73,6 +442,7 @@ dialog.addEventListener('close',()=>{if(dialogTrigger)dialogTrigger.focus();});
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
   document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('selected',b===button);b.setAttribute('aria-pressed',String(b===button));});
   let count=0;document.querySelectorAll('.project-card').forEach(card=>{const visible=button.dataset.filter==='all'||card.dataset.category===button.dataset.filter;card.hidden=!visible;if(visible){count++;card.classList.add('visible');}});
+  document.querySelectorAll('.project-group').forEach(group=>{group.hidden=button.dataset.filter!=='all'&&group.dataset.group!==button.dataset.filter;});
   document.getElementById('project-count').textContent=`${count} project${count===1?'':'s'}`;
 }));
 
@@ -123,3 +493,20 @@ mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu)
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 document.getElementById('copy-email').addEventListener('click',async()=>{const status=document.getElementById('copy-status');try{await navigator.clipboard.writeText('nirzordeb79@gmail.com');status.textContent='Email copied';}catch(_){status.textContent='Select the email link to send a message.';}});
 document.getElementById('year').textContent=new Date().getFullYear();
+
+// Gentle pointer parallax for the About portrait, layered over its automatic sway.
+const portrait3d=document.getElementById('portrait-3d');
+if(portrait3d){
+  portrait3d.addEventListener('pointermove',event=>{
+    if(motionPaused||motionMedia.matches||event.pointerType==='touch')return;
+    const rect=portrait3d.getBoundingClientRect();
+    const px=(event.clientX-rect.left)/rect.width-.5;
+    const py=(event.clientY-rect.top)/rect.height-.5;
+    portrait3d.style.setProperty('--portrait-y',`${px*8}deg`);
+    portrait3d.style.setProperty('--portrait-x',`${-py*6}deg`);
+  });
+  portrait3d.addEventListener('pointerleave',()=>{
+    portrait3d.style.setProperty('--portrait-x','0deg');
+    portrait3d.style.setProperty('--portrait-y','0deg');
+  });
+}
