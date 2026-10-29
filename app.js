@@ -166,6 +166,26 @@ const projects = [
     "explore": "Explore the source code and project documentation on GitHub."
   },
   {
+    "id": "arduino-projects",
+    "name": "Arduino Projects — Wokwi Simulations",
+    "type": "peripherals",
+    "label": "ARDUINO / WOKWI",
+    "repo": "Arduino-Projects-",
+    "tags": [
+      "Arduino",
+      "C++",
+      "Wokwi"
+    ],
+    "description": "A collection of Arduino projects built and simulated using Wokwi, covering sensors, motors, displays, and embedded systems fundamentals.",
+    "focus": [
+      "Arduino prototyping and Wokwi simulation.",
+      "Projects covering sensors, motors, and displays.",
+      "Source code, circuit diagrams, and project READMEs."
+    ],
+    "explore": "Explore the individual projects, circuit diagrams, and simulation documentation in the repository.",
+    "visual": "arduino-lab"
+  },
+  {
     "id": "spi",
     "name": "SPI LIS3DSH Sensor Driver",
     "type": "drivers",
@@ -302,6 +322,26 @@ const projects = [
     ],
     "explore": "Explore the repository for the interface implementation and hardware details.",
     "visual": "hub"
+  },
+  {
+    "id": "nfc-attendance",
+    "name": "NFC-Based Attendance System",
+    "type": "protocols",
+    "label": "NFC / ATTENDANCE",
+    "repo": "NFC-BASED-ATTENDANCE-SYSTEM",
+    "tags": [
+      "NFC",
+      "C++",
+      "Attendance"
+    ],
+    "description": "An NFC-based attendance-system project exploring contactless identification and attendance recording.",
+    "focus": [
+      "NFC-based attendance-system development.",
+      "Contactless identification and attendance-recording workflow.",
+      "See the repository for hardware, implementation, and setup details."
+    ],
+    "explore": "Explore the source code and repository documentation for the implementation and hardware requirements.",
+    "visual": "nfc-attendance"
   },
   {
     "id": "motionsense",
@@ -529,6 +569,33 @@ function mlProjectVisual(id){
   return `<svg class="ml-project-3d m3-${id}" viewBox="0 0 360 195" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${desc}">${floor}${b}</svg>`;
 }
 
+// Additional projects supplied by the portfolio owner; activity is illustrative.
+function newProjectVisual(kind){
+  const text=(x,y,t,size=8,c='#b9d5a1')=>`<text x="${x}" y="${y}" font-family="ui-monospace,monospace" font-size="${size}" fill="${c}">${t}</text>`;
+  const box=(x,y,w,h,t='',c='#8cba65')=>`<g transform="translate(${x} ${y})"><path d="M0 0l12-8h${w}l-12 8z" fill="${c}" stroke="#c4e6a577"/><path d="M0 0h${w}v${h}H0z" fill="#274930" stroke="#8fb469"/><path d="M${w} 0l12-8v${h}l-12 8z" fill="#476e3e" stroke="#8fb469"/>${t?text(5,h/2+3,t,8,'#e0f3c8'):''}</g>`;
+  const wire=d=>`<path d="${d}" fill="none" stroke="#79985a55"/><path class="a3-data" d="${d}" fill="none" stroke="#d4ff70" stroke-width="1.7" stroke-dasharray="5 35"/>`;
+  let b='',label='';
+  const floor='<ellipse cx="181" cy="149" rx="137" ry="17" fill="#0005"/><path d="M22 145l156-74 160 61-154 53z" fill="#9ed56605" stroke="#99c65b20"/>';
+  if(kind==='nfc-attendance'){
+    label='Animated 3D NFC card scanning above a reader and recording an illustrative attendance check-in';
+    b+='<g class="a3-reader">'+box(89,115,91,23,'NFC READER','#508359')+'<path d="M110 106h53m-48-5h44m-36-5h28" stroke="#a2cf78" fill="none" stroke-width="1.2"/></g>';
+    b+='<g class="a3-radio"><ellipse cx="137" cy="95" rx="28" ry="9" fill="none" stroke="#c2ee7d"/><ellipse cx="137" cy="88" rx="36" ry="12" fill="none" stroke="#a9da7166"/><ellipse cx="137" cy="81" rx="44" ry="15" fill="none" stroke="#a9da7133"/></g>';
+    b+='<g class="a3-card"><path d="M72 54l32-18 81 26-34 19z" fill="#90b577" stroke="#deefbd"/><path d="M72 54v5l79 27v-5l34-19v5l-34 19" fill="#365c39" stroke="#a5ca85"/><path d="M91 54l11-6 17 6-11 6z" fill="#d3c185" stroke="#e6d7aa"/>'+text(120,61,'NFC ID',6,'#284c2f')+'</g>';
+    b+=wire('M192 126h30l21-23')+'<g class="a3-attendance-panel"><path d="M241 56h89v87h-89z" fill="#1e3d29" stroke="#96bb73"/><path d="M247 62h77v72h-77z" fill="#102318" stroke="#597c49"/>'+text(253,76,'ATTENDANCE',7,'#d4ff70');
+    for(let i=0;i<3;i++)b+=`<g class="a3-check-row" style="--entry:${i}"><path d="M254 ${88+i*13}h38" stroke="#a6cd80" stroke-width="3"/><path d="M302 ${87+i*13}l4 4 7-8" fill="none" stroke="#d4ff70" stroke-width="1.7"/></g>`;
+    b+='</g>'+text(31,31,'CONTACTLESS IDENTIFICATION',9,'#d4ff70')+text(42,180,'TAP CARD → READ ID → RECORD ATTENDANCE',7);
+  }else{
+    label='Animated 3D Arduino prototyping collection showing sensors, a motor and a display in simulation';
+    b+='<g class="a3-arduino"><path d="M40 116l61-30 101 34-64 34z" fill="#276f79" stroke="#93bec0"/><path d="M40 116v7l98 38 64-34v-7" fill="#1b454e" stroke="#6c9e95"/>'+box(83,110,58,18,'ATmega','#354c3c')+text(98,104,'UNO',7,'#d6eac0');
+    for(let i=0;i<8;i++)b+=`<path d="M${61+i*9} ${108-i*3.8}l6 2M${102+i*9} ${143-i*3.8}l6 2" stroke="#c0bf83" stroke-width="2"/>`;b+='</g>';
+    b+=wire('M197 120h30l32-19')+wire('M124 98l27-30h39');
+    b+='<g class="a3-display"><path d="M239 68h86v55h-86z" fill="#234630" stroke="#8fb56d"/><path d="M245 74h74v42h-74z" fill="#102d23" stroke="#719f68"/>'+text(253,88,'SIMULATION',6,'#c5f392')+'<path class="a3-display-wave" d="M251 105l8-7 7 5 8-12 7 12 8-6 8 7 8-9 8 3" fill="none" stroke="#b9e77e" stroke-width="1.3"/></g>';
+    b+='<g class="a3-motor"><circle cx="209" cy="60" r="24" fill="#32573c" stroke="#a7c68b"/><g class="a3-rotor"><path d="M209 60c-30-4-15-30-2-21l2 21c17-26 32 1 15 6l-15-6c8 30-21 25-19 7z" fill="#a6c887" stroke="#d4e5b7"/></g><circle cx="209" cy="60" r="5" fill="#536b49" stroke="#c8dda9"/></g>';
+    b+=box(29,57,37,24,'SENSE','#73a792')+wire('M78 69l27 24')+'<rect x="143" y="143" width="127" height="20" rx="3" fill="#142a1c" stroke="#7c9c57"/>'+text(153,156,'WOKWI / PROTOTYPING',7,'#d4ff70')+text(29,31,'SENSORS / MOTORS / DISPLAYS',9,'#d4ff70')+text(52,180,'BUILD → SIMULATE → LEARN',8);
+  }
+  return `<svg class="additional-project-3d a3-${kind}" viewBox="0 0 360 195" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}">${floor}${b}</svg>`;
+}
+
 function visual(kind){
   const text=(x,y,s,c='#a9c596',size=9)=>`<text x="${x}" y="${y}" fill="${c}" font-family="monospace" font-size="${size}">${s}</text>`;
   const block=(x,y,w,h,s)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="#1d3724" stroke="#89b657"/>${text(x+9,y+h/2+3,s)}`;
@@ -582,7 +649,7 @@ function visual(kind){
 
 const grid=document.getElementById('project-grid');
 if(grid){
-function projectCard(p,i){return `<article class="project-card reveal" data-category="${p.type}"><div class="project-visual"><span class="visual-label">${p.label}</span>${p.type==='foundation'?foundationVisual(p.visual):p.type==='peripherals'?peripheralVisual(p.visual):p.type==='drivers'?driverVisual(p.visual):['rtos','protocols'].includes(p.type)?systemProjectVisual(p.id):p.type==='ml'?mlProjectVisual(p.id):visual(p.visual)}<span class="visual-caption">ILLUSTRATIVE ${p.visual==='motion'||p.visual==='thermal'?'SIGNAL':'WORKFLOW'}</span></div><div class="project-body"><span class="project-index">${String(i+1).padStart(2,'0')} / ${p.label}</span><h4>${p.name}</h4><p>${p.description}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><button type="button" data-project="${p.id}" aria-label="Read project notes for ${p.name}">Project notes ↗</button><a href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} repository on GitHub">GitHub ↗</a></div></div></article>`;}
+function projectCard(p,i){return `<article class="project-card reveal" data-category="${p.type}"><div class="project-visual"><span class="visual-label">${p.label}</span>${['arduino-lab','nfc-attendance'].includes(p.visual)?newProjectVisual(p.visual):p.type==='foundation'?foundationVisual(p.visual):p.type==='peripherals'?peripheralVisual(p.visual):p.type==='drivers'?driverVisual(p.visual):['rtos','protocols'].includes(p.type)?systemProjectVisual(p.id):p.type==='ml'?mlProjectVisual(p.id):visual(p.visual)}<span class="visual-caption">ILLUSTRATIVE ${p.visual==='motion'||p.visual==='thermal'?'SIGNAL':'WORKFLOW'}</span></div><div class="project-body"><span class="project-index">${String(i+1).padStart(2,'0')} / ${p.label}</span><h4>${p.name}</h4><p>${p.description}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><button type="button" data-project="${p.id}" aria-label="Read project notes for ${p.name}">Project notes ↗</button><a href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} repository on GitHub">GitHub ↗</a></div></div></article>`;}
 grid.innerHTML=projectGroups.map(group=>{
   const items=projects.filter(p=>p.type===group.id);
   return `<section class="project-group" data-group="${group.id}" aria-labelledby="group-${group.id}"><div class="project-group-heading"><h3 id="group-${group.id}">${group.name}</h3><span>${items.length} project${items.length===1?'':'s'}</span></div><div class="project-grid">${items.map(p=>projectCard(p,projects.indexOf(p))).join('')}</div></section>`;
