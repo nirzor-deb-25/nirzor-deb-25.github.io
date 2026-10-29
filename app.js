@@ -581,6 +581,7 @@ function visual(kind){
 }
 
 const grid=document.getElementById('project-grid');
+if(grid){
 function projectCard(p,i){return `<article class="project-card reveal" data-category="${p.type}"><div class="project-visual"><span class="visual-label">${p.label}</span>${p.type==='foundation'?foundationVisual(p.visual):p.type==='peripherals'?peripheralVisual(p.visual):p.type==='drivers'?driverVisual(p.visual):['rtos','protocols'].includes(p.type)?systemProjectVisual(p.id):p.type==='ml'?mlProjectVisual(p.id):visual(p.visual)}<span class="visual-caption">ILLUSTRATIVE ${p.visual==='motion'||p.visual==='thermal'?'SIGNAL':'WORKFLOW'}</span></div><div class="project-body"><span class="project-index">${String(i+1).padStart(2,'0')} / ${p.label}</span><h4>${p.name}</h4><p>${p.description}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><button type="button" data-project="${p.id}" aria-label="Read project notes for ${p.name}">Project notes ↗</button><a href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} repository on GitHub">GitHub ↗</a></div></div></article>`;}
 grid.innerHTML=projectGroups.map(group=>{
   const items=projects.filter(p=>p.type===group.id);
@@ -610,6 +611,9 @@ document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListen
   document.getElementById('project-count').textContent=`${count} project${count===1?'':'s'}`;
 }));
 
+}
+
+if(document.getElementById('board')){
 for(const id of ['strip-left','strip-right'])document.getElementById(id).innerHTML='<i></i>'.repeat(50);
 document.getElementById('swd-header').innerHTML='<i></i>'.repeat(6);
 let parts='';
@@ -630,6 +634,8 @@ function endDrag(){drag=null;}window.addEventListener('pointerup',endDrag);stage
 document.getElementById('reset-view').addEventListener('click',()=>{rx=33;ry=-18;rz=-23;board.style.transform='';});
 window.addEventListener('resize',()=>{if(board.style.transform)rotateBoard();});
 
+}
+
 const motionButton=document.getElementById('motion-toggle');
 const motionMedia=window.matchMedia('(prefers-reduced-motion: reduce)');
 let motionPaused=motionMedia.matches;
@@ -648,7 +654,7 @@ function closeMenu(){mobileNav.hidden=true;menuToggle.setAttribute('aria-expande
 menuToggle.addEventListener('click',()=>{const open=mobileNav.hidden;mobileNav.hidden=!open;menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
-document.getElementById('copy-email').addEventListener('click',async()=>{const status=document.getElementById('copy-status');try{await navigator.clipboard.writeText('nirzordeb79@gmail.com');status.textContent='Email copied';}catch(_){status.textContent='Select the email link to send a message.';}});
+document.getElementById('copy-email')?.addEventListener('click',async()=>{const status=document.getElementById('copy-status');try{await navigator.clipboard.writeText('nirzordeb79@gmail.com');status.textContent='Email copied';}catch(_){status.textContent='Select the email link to send a message.';}});
 document.getElementById('year').textContent=new Date().getFullYear();
 
 // Gentle pointer parallax for the About portrait, layered over its automatic sway.
@@ -666,4 +672,11 @@ if(portrait3d){
     portrait3d.style.setProperty('--portrait-x','0deg');
     portrait3d.style.setProperty('--portrait-y','0deg');
   });
+}
+
+// Keep previously shared section links working after the move to separate pages.
+if(document.body.dataset.page==='home'){
+ const oldPages={projects:"projects.html",about:"about.html",skills:"toolkit.html",learning:"learning.html",contact:"contact.html"};
+ const oldTarget=oldPages[location.hash.slice(1)];
+ if(oldTarget)location.replace("./"+oldTarget);
 }
