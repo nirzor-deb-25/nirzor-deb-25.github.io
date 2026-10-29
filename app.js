@@ -460,18 +460,11 @@ const board=document.getElementById('board'),stage=document.getElementById('hard
 let drag=null,rx=33,ry=-18,rz=-23;
 function boardScale(){const w=window.innerWidth;return w<=700?.82:w<=900?.65:w<=1150?.76:.82;}
 function rotateBoard(){board.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${boardScale()})`;}
-stage.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;drag={x:e.clientX,y:e.clientY,rx,ry};if(e.pointerType!=='touch')stage.setPointerCapture(e.pointerId);});
+stage.addEventListener('pointerdown',e=>{if(e.target.closest('button')||stage.dataset.mode!=='motion'||stage.dataset.slide!=='0')return;drag={x:e.clientX,y:e.clientY,rx,ry};if(e.pointerType!=='touch')stage.setPointerCapture(e.pointerId);});
 stage.addEventListener('pointermove',e=>{if(!drag)return;ry=Math.max(-65,Math.min(65,drag.ry+(e.clientX-drag.x)*.35));rx=Math.max(0,Math.min(65,drag.rx-(e.clientY-drag.y)*.25));rotateBoard();});
 function endDrag(){drag=null;}window.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',endDrag);stage.addEventListener('lostpointercapture',endDrag);
 document.getElementById('reset-view').addEventListener('click',()=>{rx=33;ry=-18;rz=-23;board.style.transform='';});
 window.addEventListener('resize',()=>{if(board.style.transform)rotateBoard();});
-const modeDescriptions={motion:'ACCELEROMETER / MOTION CLASSIFICATION',sensor:'SENSOR INPUT / TEMPERATURE FORECASTING',system:'FIRMWARE / REAL-TIME TASKS'};
-document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>{
-  document.querySelectorAll('[data-mode]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
-  stage.dataset.mode=button.dataset.mode;
-  document.getElementById('mode-label').textContent=modeDescriptions[button.dataset.mode];
-  const hues={motion:'0deg',sensor:'35deg',system:'-25deg'};stage.querySelector('.trace-active').style.filter=`hue-rotate(${hues[button.dataset.mode]})`;
-}));
 
 const motionButton=document.getElementById('motion-toggle');
 const motionMedia=window.matchMedia('(prefers-reduced-motion: reduce)');

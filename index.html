@@ -8,7 +8,7 @@
   <meta property="og:type" content="website">
   <title>Nirzor Deb — Embedded Systems & IoT</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css"><script src="./app.js" defer></script>
+  <link rel="stylesheet" href="./styles.css"><script src="./app.js" defer></script><script src="./hardware.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -30,7 +30,7 @@
     <div class="hero-topics"><span>STM32 / ARM</span><span>EMBEDDED C</span><span>FREERTOS</span><span>EMBEDDED ML</span></div>
   </div>
   <div class="hardware-panel">
-    <div class="panel-topline"><span><span class="status-dot"></span> INTERACTIVE HARDWARE STUDY</span><span>01 / STM32</span></div>
+    <div class="panel-topline"><span><span class="status-dot"></span> INTERACTIVE HARDWARE STUDY</span><span id="hardware-position">01 / 05</span></div>
     <div class="hardware-stage" id="hardware-stage" aria-label="Interactive 3D illustration of an STM32 Discovery board; drag to rotate">
       <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="stage-cross cross-one">+</div><div class="stage-cross cross-two">+</div>
       <div class="board-float"><div class="board" id="board">
@@ -53,9 +53,10 @@
       <div class="board-callout"><span></span><small>STM32F407</small><strong>ARM Cortex-M4</strong></div>
       <span class="stage-label">DRAG TO ROTATE <span aria-hidden="true">⤢</span></span><button class="reset-view" id="reset-view" type="button">Reset view ↺</button>
     </div>
-    <div class="board-controls" aria-label="Hardware illustration modes"><button type="button" class="active" data-mode="motion" aria-pressed="true">01 Motion</button><button type="button" data-mode="sensor" aria-pressed="false">02 Sensor</button><button type="button" data-mode="system" aria-pressed="false">03 System</button></div>
+    <div class="board-controls" aria-label="Hardware illustration modes"><button type="button" class="active" data-mode="motion" aria-pressed="true">01 Motion</button><button type="button" data-mode="sensor" aria-pressed="false">02 Sensors</button><button type="button" data-mode="system" aria-pressed="false">03 Systems</button></div>
+    <div class="hardware-navigation"><button id="hardware-prev" type="button" aria-label="Previous board">←</button><div aria-live="polite" aria-atomic="true"><h2 id="hardware-title">STM32F4-DISCOVERY</h2><p id="hardware-subtitle">STM32F407 · ST-LINK · onboard motion sensor</p></div><button id="hardware-next" type="button" aria-label="Next board">→</button></div>
     <div class="board-readout"><span id="mode-label">ACCELEROMETER / MOTION CLASSIFICATION</span><span class="readout-light"></span></div>
-    <p class="simulation-caption">Interactive board illustration · simulated activity</p>
+    <p class="simulation-caption">Interactive 3D illustrations · simulated activity</p>
   </div>
   <div class="hero-bottom"><span>BUILD. DEBUG. UNDERSTAND.</span><a href="#projects">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
 </section>
