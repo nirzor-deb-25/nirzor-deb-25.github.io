@@ -1,74 +1,168 @@
-# Nirzor Deb — Embedded Systems & IoT Portfolio
+# Nirzor Deb | Embedded Systems, Firmware & IoT Portfolio
 
-A self-contained portfolio for GitHub Pages. No npm, build command, API key, or paid service is needed.
+**Build. Debug. Understand.**
 
-## Publish on GitHub Pages — step by step
+[View Portfolio](https://nirzor-deb-25.github.io/) · [Explore Projects](https://nirzor-deb-25.github.io/projects.html) · [GitHub Profile](https://github.com/nirzor-deb-25) · [LinkedIn](https://www.linkedin.com/in/nirzor-deb-opi-635846336/)
 
-1. Extract the downloaded ZIP using **Extract All**.
-2. Sign in to GitHub as `nirzor-deb-25`.
-3. Create a **public** repository named exactly **nirzor-deb-25.github.io**.
-   - This is a website repository. It is different from the existing `nirzor-deb-25` profile README repository.
-   - If `nirzor-deb-25.github.io` already exists, download a backup of it before replacing its website files.
-4. In that repository, select **Add file → Upload files**.
-5. Open the extracted ZIP folder. Drag the **contents** into GitHub: `index.html`, `styles.css`, `app.js`, `.nojekyll`, the `assets` folder, and the Markdown guides. Do not upload the ZIP itself or an extra outer folder.
-6. Select **Commit changes**. The website files should be on the `main` branch.
-7. Go to **Settings → Pages**.
-8. Under **Build and deployment**, choose **Deploy from a branch**.
-9. Choose **main** and **/(root)**. Click **Save**.
-10. Wait for the Pages deployment to finish. The **Visit site** link in Settings → Pages opens your website. Publishing can take several minutes.
+---
 
-With that exact repository name, the expected address is `https://nirzor-deb-25.github.io/`. The address is an expected deployment target, not a currently verified live website.
+## About this portfolio
 
-Official instructions:
-- https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
-- https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+I'm Nirzor Deb, an engineering student at **LAB University of Applied Sciences, Finland**, focused on **embedded systems, low-level firmware, IoT and on-device intelligence**.
 
-## Preview on your computer
+This website brings together **16 selected projects** involving embedded C, STM32/ARM Cortex-M microcontrollers, peripheral drivers, real-time systems, connected sensors and exploratory machine-learning applications. The goal is to make the technical work easy to navigate, review and discuss — from implementation decisions to testing and limitations.
 
-Open **index.html** in a modern browser after extracting the whole folder. Keep its neighboring files and `assets` folder together.
+I am interested in **embedded software and firmware internship opportunities**, as well as industry-oriented bachelor's thesis projects.
 
-For a local server, open a terminal in the folder and run:
+> **Portfolio principle:** The source repositories and their documentation are the references for implementation, testing and measured results. The website's animated diagrams are explanatory illustrations, not live hardware data or engineering measurements.
 
-```sh
-python -m http.server 8000
+## Selected engineering projects
+
+### 01 — C programming & low-level fundamentals
+
+| Project | Focus | Source |
+| --- | --- | --- |
+| **Custom Memory Allocator in C** | Memory pools, heap allocation, splitting/coalescing and allocator testing | [Repository](https://github.com/nirzor-deb-25/embedded-c-memory-allocator-) |
+| **Register-Level LED & Button Control** | STM32F407 GPIO, RCC, memory-mapped I/O, register-level control and debouncing | [Repository](https://github.com/nirzor-deb-25/stm32_register_led_button) |
+
+### 02 — STM32 peripherals & firmware
+
+| Project | Focus | Source |
+| --- | --- | --- |
+| **PWM LED Dimmer** | Hardware timers, PWM configuration and LED brightness control | [Repository](https://github.com/nirzor-deb-25/stm32_pwm_led_dimmer) |
+| **DMA UART Echo** | UART communication, DMA data transfers and interrupt-driven firmware | [Repository](https://github.com/nirzor-deb-25/stm32_dma_uart_echo) |
+| **UART Firmware Bootloader** | Firmware transfer over UART, flash programming and application startup | [Repository](https://github.com/nirzor-deb-25/stm32_uart_bootloader) |
+| **Arduino Projects — Wokwi Simulations** | Arduino-based exercises with sensors, motors, displays and simulated circuits | [Repository](https://github.com/nirzor-deb-25/Arduino-Projects-) |
+
+### 03 — Drivers, debugging & real-time systems
+
+| Project | Focus | Source |
+| --- | --- | --- |
+| **SPI LIS3DSH Sensor Driver** | SPI peripheral communication and accelerometer interfacing | [Repository](https://github.com/nirzor-deb-25/stm32_spi_lis3dsh) |
+| **Cortex-M4 HardFault Debugging** | Fault registers, exception context, GDB/SWD and root-cause analysis | [Repository](https://github.com/nirzor-deb-25/stm32_hardfault_debug) |
+| **FreeRTOS Sensor System** | Task scheduling, sensor acquisition and real-time multitasking | [Repository](https://github.com/nirzor-deb-25/stm32_freertos_sensor_system) |
+
+### 04 — IoT & connected systems
+
+| Project | Focus | Source |
+| --- | --- | --- |
+| **NFC-Based Attendance System** | NFC identification, embedded connectivity and attendance recording workflow | [Repository](https://github.com/nirzor-deb-25/NFC-BASED-ATTENDANCE-SYSTEM) |
+| **TwinTrust — IoT Data Quality & Digital Twins** | Sensor-data validation and quality monitoring in an educational IoT prototype | [Repository](https://github.com/nirzor-deb-25/twintrust-project) |
+
+### 05 — Embedded machine learning & intelligent power systems
+
+| Project | Focus | Source |
+| --- | --- | --- |
+| **STM32 MotionSense** | Accelerometer-based motion classification and on-device ML exploration | [Repository](https://github.com/nirzor-deb-25/stm32-motionsense) |
+| **STM32 MachineGuard Lite** | Vibration analysis and anomaly-detection exploration | [Repository](https://github.com/nirzor-deb-25/stm32-machineguard-lite) |
+| **STM32 ThermalPredict** | BME280 temperature measurements and predictive modeling | [Repository](https://github.com/nirzor-deb-25/stm32-thermalpredict) |
+| **BoostConverterML** | ML-based analysis using simulated boost-converter data; not a validated physical closed-loop controller | [Repository](https://github.com/nirzor-deb-25/BoostConverterML) |
+| **STM32-EV-Climbing-Power-ML** | Experimental EV climbing-power estimation using synthetic acceleration inputs | [Repository](https://github.com/nirzor-deb-25/STM32-EV-Climbing-Power-ML) |
+
+**Total: 16 curated projects.** Project maturity, hardware verification and test coverage vary; consult each repository for the available evidence.
+
+## Technical areas
+
+- **Languages and fundamentals:** C, embedded C, introductory C++, bitwise operations, memory management and Make-based builds.
+- **Microcontrollers:** STM32F407 / ARM Cortex-M4, peripheral registers, clocks, GPIO, timers, UART, SPI, DMA and interrupts.
+- **Real-time firmware:** FreeRTOS, task scheduling, synchronization and embedded sensor workflows.
+- **Debugging and tools:** STM32CubeIDE, GCC, GDB, ST-LINK/SWD, Git and GitHub.
+- **IoT and experimentation:** ESP32/Arduino-related work, NFC, sensor-data handling, Wokwi simulation and introductory embedded ML.
+
+The list reflects the subject areas represented by the portfolio. It is **not** a claim of expert proficiency in every technology.
+
+## Website experience
+
+The portfolio is a lightweight, multi-page **HTML, CSS and JavaScript** site designed for GitHub Pages. It includes:
+
+- An interactive **CSS 3D STM32 Discovery-inspired board** with rotation and hardware visualization modes.
+- Animated technical illustrations for selected projects, including IoT and embedded ML workflows.
+- A searchable-by-category project browsing experience with filters and project detail dialogs.
+- Dedicated **Home**, **Projects**, **About**, **Toolkit**, **Learning** and **Contact** pages.
+- Responsive layouts, accessible navigation, reduced-motion support and motion controls.
+- Direct links to project source repositories and professional profiles.
+
+The 3D board and diagrams are conceptual website graphics — **not CAD models, real-time telemetry or validated measurements**.
+
+## Repository structure
+
+```text
+nirzor-deb-25.github.io/
+├── index.html                  # Home and interactive hardware showcase
+├── projects.html               # Project gallery and category filters
+├── about.html                  # Background and interests
+├── toolkit.html                # Technical tools and hardware
+├── learning.html               # Learning focus and development goals
+├── contact.html                # Contact and profile links
+├── styles.css                  # Theme, layout, responsive styles and 3D visuals
+├── app.js                      # Project records, filtering and site interactions
+├── hardware.js                 # Interactive hardware presentation
+├── nirzor.jpg                  # Portrait image
+├── nirzor-portrait-3d.png      # Stylized portrait asset
+├── favicon.svg                 # Site icon
+├── .nojekyll                   # Disable Jekyll processing on GitHub Pages
+└── README.md                   # Project overview and setup guide
 ```
 
-Then visit `http://localhost:8000`.
+## Run locally
 
-## What is included
+No npm installation, build process, API key or backend is required.
 
-- Interactive CSS 3D STM32 Discovery-inspired board: drag to rotate and reset the view.
-- Three board illustration modes with simulated activity labels.
-- Nine curated projects with category filters and project-note dialogs.
-- About section with the green portrait.
-- Technical toolkit, workbench hardware, certificates, and learning goals.
-- Email, copy-email, GitHub, and LinkedIn contact links.
-- Mobile menu, keyboard focus styles, reduced-motion support, and an animation pause control.
+1. Download or clone the repository:
+   ```bash
+   git clone https://github.com/nirzor-deb-25/nirzor-deb-25.github.io.git
+   cd nirzor-deb-25.github.io
+   ```
+2. Open `index.html` in your browser, **or** start a local server:
+   ```bash
+   python -m http.server 8000
+   ```
+3. Open [http://localhost:8000](http://localhost:8000).
 
-The board is an illustration of an STM32 Discovery board, not an engineering CAD model or a live device connection. Project graphics show illustrative signals/workflows, not measured test data.
+Keep all HTML, JavaScript, CSS and image assets together in the repository root as structured above.
 
-## How to update it
+## Publish with GitHub Pages
 
-| Change | File |
+1. Upload the website files to the **root** of the `nirzor-deb-25.github.io` repository (not as a ZIP file or nested directory).
+2. Commit them to your publishing branch, normally `main`.
+3. Open **Settings → Pages** in GitHub.
+4. Select **Deploy from a branch**, then choose **main** and **/(root)**.
+5. Save the settings and check the Pages deployment status.
+6. When deployment succeeds, visit **https://nirzor-deb-25.github.io/**.
+
+Reference: [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
+
+## Maintain and update the portfolio
+
+| What you want to update | File |
 | --- | --- |
-| Add/edit a project, category, description, tags, or repository link | `app.js`, in the `projects` array at the top |
-| Change the biography, certificates, hardware list, contact details, or learning goals | `index.html` |
-| Change colors, typography, layout, or 3D board appearance | `styles.css` |
-| Change the profile portrait | Replace `assets/nirzor.jpg` with a square image using the same filename |
+| Project title, category, tags, description or GitHub link | `app.js` — `projects` and `projectGroups` |
+| Homepage introduction and featured sections | `index.html` |
+| Project listing layout and initial counts | `projects.html` |
+| Background, tools, learning goals or contact details | `about.html`, `toolkit.html`, `learning.html`, `contact.html` |
+| Color palette, animation, page layout and responsive design | `styles.css` |
+| 3D hardware interactions | `hardware.js` |
+| Portrait assets | `nirzor.jpg`, `nirzor-portrait-3d.png` |
 
-If you add projects, update the initial project count and the All work count in `index.html` too. The count updates automatically when a filter is clicked.
+When changing the project inventory, check the project count shown on the homepage and project listing. Ensure every portfolio link points to the intended repository and each description matches the available code or documentation.
 
-All website assets are local. The page does not load external fonts, track visitors, or require a backend. The motion preference is stored only in the visitor's browser. The email button opens the visitor's email application; it is not a server-side contact form.
+## Engineering integrity & current limitations
 
-## Verification completed
+- The portfolio represents **learning and project work**, with different levels of implementation and validation across projects.
+- AI-assisted development may have been used in project planning or implementation. Source comprehension, independent debugging and reproducible testing remain important development goals.
+- The BoostConverterML and EV climbing-power studies use simulated or synthetic data; they are **not presented as field-validated industrial controllers**.
+- TwinTrust is an educational sensor-data quality prototype, **not a certified industrial safety product**.
+- Website animations visualize concepts and do not establish physical-system performance.
+- The website does not require a backend or collect messages through a hosted form; contact links open external destinations or the visitor's email application.
 
-- JavaScript syntax check.
-- Desktop browser review.
-- Mobile layout at a 390-pixel iframe width (375-pixel content width with scrollbar), with no horizontal overflow.
-- Embedded ML filter shows two projects; all-work list shows nine.
-- Project-note dialog opens with the correct project and repository link.
-- Hardware mode controls, pointer-drag rotation, reset, motion pause, and mobile navigation checked.
-- Local asset paths and internal anchor targets checked.
-- ZIP integrity and saved-file hashes checked.
+## Contact & opportunities
 
-The site has been built and packaged. It has not been uploaded or published to your GitHub account. Repository contents and credential status were not independently audited; descriptions and certificate details are based on the supplied PDFs.
+I welcome conversations about **embedded software, firmware development, IoT, industrial electronics, internships and bachelor's thesis collaboration**.
+
+- **Portfolio:** https://nirzor-deb-25.github.io/
+- **GitHub:** https://github.com/nirzor-deb-25
+- **LinkedIn:** https://www.linkedin.com/in/nirzor-deb-opi-635846336/
+
+---
+
+**Build. Debug. Understand.** — *Nirzor Deb*
