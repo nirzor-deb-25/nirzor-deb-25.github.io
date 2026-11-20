@@ -130,3 +130,25 @@ body{min-height:100vh;display:flex;flex-direction:column}main{flex:1}.site-heade
 .a3-data{animation:a3-data 3s linear infinite}.a3-reader,.a3-attendance-panel,.a3-arduino,.a3-display{animation:a3-float 7s ease-in-out infinite}.a3-attendance-panel,.a3-display{animation-delay:-2s}.a3-card{animation:a3-card 6s ease-in-out infinite}.a3-radio{animation:a3-radio 6s ease-in-out infinite}.a3-check-row{animation:a3-check 6s ease-in-out infinite;animation-delay:calc(var(--entry)*.3s)}.a3-rotor{transform-box:fill-box;transform-origin:center;animation:a3-rotor 5s linear infinite}.a3-display-wave{stroke-dasharray:130;animation:a3-display 6s ease-in-out infinite}
 @keyframes a3-data{to{stroke-dashoffset:-160}}@keyframes a3-float{0%,100%{transform:translateY(2px)}50%{transform:translateY(-4px)}}@keyframes a3-card{0%,100%{transform:translate(-10px,-10px) rotate(-3deg);opacity:.65}35%,60%{transform:translate(8px,22px);opacity:1}}@keyframes a3-radio{0%,20%,90%,100%{opacity:.12}40%,65%{opacity:1}}@keyframes a3-check{0%,25%,100%{opacity:.15}45%,85%{opacity:1}}@keyframes a3-rotor{to{transform:rotate(360deg)}}@keyframes a3-display{0%,100%{stroke-dashoffset:60;opacity:.5}50%{stroke-dashoffset:0;opacity:1}}
 @media(prefers-reduced-motion:reduce){.additional-project-3d *{animation:none!important}.additional-project-3d .a3-radio{opacity:.6}}
+
+/* Portfolio update: new isometric energy project illustrations */
+.energy-scene{width:100%;height:100%;min-height:180px;overflow:visible;filter:drop-shadow(0 10px 18px rgba(0,0,0,.18))}
+.energy-device{transform-origin:180px 110px;animation:energy-float 5s ease-in-out infinite}
+.energy-orbit{transform-origin:180px 112px;animation:energy-spin 20s linear infinite}
+.energy-pulse{animation:energy-glow 2.3s ease-in-out infinite}
+.energy-chip{filter:drop-shadow(0 0 7px rgba(191,255,121,.3))}
+.repo-pending{font-size:.8rem;color:#a9bcaa;align-self:center}
+@keyframes energy-float{0%,100%{transform:translateY(2px)}50%{transform:translateY(-8px)}}
+@keyframes energy-spin{to{transform:rotate(360deg)}}
+@keyframes energy-glow{0%,100%{opacity:.25}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.energy-device,.energy-orbit,.energy-pulse{animation:none!important}}
+body.motion-paused .energy-device,body.motion-paused .energy-orbit,body.motion-paused .energy-pulse{animation-play-state:paused!important}
+
+/* TwinTrust project illustration: subtle telemetry pulse and floating 3D-style boards. */
+.twintrust-scene .tt-stream{animation:tt-telemetry 3.5s linear infinite}
+.twintrust-scene .tt-float{animation:tt-bob 5s ease-in-out infinite;transform-origin:center}
+.twintrust-scene .tt-float:nth-of-type(2){animation-delay:-2s}
+@keyframes tt-telemetry{to{stroke-dashoffset:-66}}
+@keyframes tt-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.twintrust-scene .tt-stream,.twintrust-scene .tt-float{animation:none!important}}
+body.motion-paused .twintrust-scene .tt-stream,body.motion-paused .twintrust-scene .tt-float{animation-play-state:paused!important}

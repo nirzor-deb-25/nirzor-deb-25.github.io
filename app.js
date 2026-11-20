@@ -69,26 +69,6 @@ const projects = [
     "explore": "Explore the source code and project documentation on GitHub."
   },
   {
-    "id": "makefile",
-    "name": "Makefile-Based C Build System",
-    "type": "foundation",
-    "label": "FIRMWARE / BUILD SYSTEMS",
-    "repo": "stm32_makefile_project",
-    "tags": [
-      "Make",
-      "GCC",
-      "Embedded C"
-    ],
-    "description": "A multi-file STM32 C project with a handwritten Makefile, incremental builds, and command-line flashing.",
-    "focus": [
-      "A multi-file embedded C codebase.",
-      "A handwritten Makefile with incremental builds.",
-      "Command-line firmware flashing."
-    ],
-    "explore": "Explore the build structure and documented command-line workflow.",
-    "visual": "build"
-  },
-  {
     "id": "pwm",
     "name": "PWM LED Dimmer",
     "type": "peripherals",
@@ -143,26 +123,6 @@ const projects = [
       "Part of my exploration of bootloaders and embedded firmware."
     ],
     "visual": "boot",
-    "explore": "Explore the source code and project documentation on GitHub."
-  },
-  {
-    "id": "smart-led",
-    "name": "Smart LED Controller",
-    "type": "peripherals",
-    "label": "GPIO / PWM / FIRMWARE",
-    "repo": "stm32_smart_led_controller",
-    "tags": [
-      "STM32",
-      "PWM",
-      "Button input"
-    ],
-    "description": "An STM32 LED-controller project combining button input, PWM brightness, and bootloader-flashable firmware.",
-    "focus": [
-      "Button-controlled LED operation.",
-      "PWM brightness control.",
-      "Firmware designed for the bootloader workflow."
-    ],
-    "visual": "gpio",
     "explore": "Explore the source code and project documentation on GitHub."
   },
   {
@@ -225,26 +185,6 @@ const projects = [
     "visual": "debug"
   },
   {
-    "id": "bootloader",
-    "name": "Ground-Up STM32 Bootloader",
-    "type": "drivers",
-    "label": "FIRMWARE / BOOTLOADERS",
-    "repo": "stm32_groundup_bootloader",
-    "tags": [
-      "C",
-      "Bootloader",
-      "STM32"
-    ],
-    "description": "A ground-up STM32 bootloader project, extending my exploration of firmware startup and update mechanisms.",
-    "focus": [
-      "A ground-up bootloader project for STM32.",
-      "Part of my firmware-development learning path.",
-      "Related work includes a separate UART bootloader repository."
-    ],
-    "explore": "Explore the implementation, startup behavior, and repository documentation.",
-    "visual": "boot"
-  },
-  {
     "id": "freertos",
     "name": "FreeRTOS Sensor System",
     "type": "rtos",
@@ -263,65 +203,6 @@ const projects = [
     ],
     "explore": "Explore the firmware and project documentation for implementation details.",
     "visual": "rtos"
-  },
-  {
-    "id": "producer-consumer",
-    "name": "FreeRTOS Producer–Consumer",
-    "type": "rtos",
-    "label": "TASK COMMUNICATION",
-    "repo": "stm32_freertos_producer_consumer",
-    "tags": [
-      "STM32",
-      "FreeRTOS",
-      "Queues"
-    ],
-    "description": "A FreeRTOS producer–consumer project exploring communication between tasks on STM32.",
-    "focus": [
-      "Producer–consumer task communication.",
-      "A FreeRTOS project alongside my sensor-system and scheduler work."
-    ],
-    "visual": "rtos",
-    "explore": "Explore the source code and project documentation on GitHub."
-  },
-  {
-    "id": "scheduler",
-    "name": "Cooperative Scheduler",
-    "type": "rtos",
-    "label": "COOPERATIVE SCHEDULING",
-    "repo": "stm32_cooperative_scheduler",
-    "tags": [
-      "STM32",
-      "Scheduling",
-      "Firmware"
-    ],
-    "description": "A cooperative-scheduler project exploring how embedded tasks can share execution time.",
-    "focus": [
-      "Cooperative scheduling on STM32.",
-      "An exploration of task execution without relying on a full RTOS.",
-      "A complement to my FreeRTOS producer-consumer and sensor projects."
-    ],
-    "explore": "Explore the source and scheduling implementation in the repository.",
-    "visual": "rtos"
-  },
-  {
-    "id": "hub",
-    "name": "Multi-Protocol Sensor Hub",
-    "type": "protocols",
-    "label": "SENSOR INTERFACES",
-    "repo": "stm32_multiprotocol_sensor_hub",
-    "tags": [
-      "STM32",
-      "Sensor hub",
-      "Interfaces"
-    ],
-    "description": "A sensor-hub project exploring multiple communication interfaces on an STM32 microcontroller.",
-    "focus": [
-      "STM32 firmware for a multi-protocol sensor hub.",
-      "Sensor integration and embedded communication interfaces.",
-      "A practical project connecting peripheral work into a system."
-    ],
-    "explore": "Explore the repository for the interface implementation and hardware details.",
-    "visual": "hub"
   },
   {
     "id": "nfc-attendance",
@@ -401,6 +282,62 @@ const projects = [
     ],
     "explore": "Explore the sensor-to-model workflow and verification documentation.",
     "visual": "thermal"
+  },
+  {
+    "id": "boostconverterml",
+    "name": "BoostConverterML",
+    "type": "ml",
+    "label": "POWER ELECTRONICS / ML",
+    "repo": "BoostConverterML",
+    "tags": [
+      "Power electronics",
+      "Machine learning",
+      "Boost converter"
+    ],
+    "description": "Python boost-converter simulation and Random Forest voltage estimation, alongside separate STM32F407 controller tests with synthetic inputs.",
+    "focus": [
+      "Generate simulated converter values and train a Random Forest voltage estimator.",
+      "Test feedforward plus PI duty commands on STM32F407 using synthetic values supplied through ST-LINK.",
+      "Simulation and firmware tests are separate; this is not a physical closed-loop converter."
+    ],
+    "explore": "Review the simulation assumptions, ML evaluation and STM32 controller test procedure on GitHub.",
+    "visual": "boost"
+  },
+  {
+    "id": "ev-climbing",
+    "name": "STM32-EV-Climbing-Power-ML",
+    "type": "ml",
+    "label": "STM32 / EV POWER",
+    "repo": "STM32-EV-Climbing-Power-ML",
+    "tags": [
+      "STM32",
+      "Electric vehicles",
+      "Machine learning"
+    ],
+    "description": "STM32F439ZI and Python prototype estimating road inclination and uphill EV power using synthetic accelerometer inputs and Ridge regression.",
+    "focus": [
+      "Generate synthetic acceleration inputs and estimate inclination using a fixed Ridge model on STM32.",
+      "Calculate climbing force, battery power and uphill energy using vehicle parameters.",
+      "Educational simulation: no real vehicle data or physical accelerometer; Python orchestrates board commands."
+    ],
+    "explore": "Review the physics model, host-to-board UART workflow and validation limitations on GitHub.",
+    "visual": "ev"
+  }
+  ,{
+    "id": "twintrust",
+    "name": "TwinTrust — IoT Data Quality & Digital Twins",
+    "type": "protocols",
+    "label": "STM32 / IOT DATA QUALITY",
+    "repo": "twintrust-project",
+    "tags": ["STM32F407", "BME280", "MQTT", "Python"],
+    "description": "Educational STM32 and BME280 IoT prototype exploring sensor noise, filtering, missing data, stale readings and basic forecasting.",
+    "focus": [
+      "Read BME280 temperature, humidity and pressure via I2C on STM32F407.",
+      "Forward USB telemetry through a Python gateway and MQTT into a backend and dashboard.",
+      "Demonstrate filtering, missing or stale samples and forecast evaluation; not a validated industrial safety system."
+    ],
+    "explore": "Explore the firmware, Python gateway, backend, sensor-quality processing, dashboard and tests.",
+    "visual": "twintrust"
   }
 ];
 
@@ -647,9 +584,22 @@ function visual(kind){
   return svgStart+body+'</svg>';
 }
 
+
+function energyProjectVisual(kind){
+ const boost=kind==='boost';
+ const name=boost?'BOOST CONVERTER':'EV CLIMBING POWER';
+ const symbol=boost?'VOUT ↑':'GRADE ↗';
+ return `<svg class="energy-scene" viewBox="0 0 360 195" role="img" aria-label="Animated isometric illustration of ${name}"><defs><linearGradient id="energy-${kind}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c5f479"/><stop offset="1" stop-color="#4b966e"/></linearGradient></defs><g class="energy-orbit"><ellipse cx="180" cy="112" rx="147" ry="62" fill="none" stroke="#9dd968" stroke-opacity=".25" stroke-dasharray="4 8"/><ellipse cx="180" cy="112" rx="118" ry="45" fill="none" stroke="#9dd968" stroke-opacity=".13"/></g><g class="energy-device"><path d="M62 99L172 42 298 101 186 163Z" fill="#295c3b" stroke="#c3e889" stroke-width="1.5"/><path d="M62 99v19l124 65v-20z" fill="#102d21" stroke="#67935b"/><path d="M186 163v20l112-62v-20z" fill="#183f2c" stroke="#67935b"/><path d="M87 101l85-43 99 44-86 46z" fill="#0e241c" stroke="#81aa62"/><path d="M105 103l69-35 80 35-69 36z" fill="none" stroke="#8bc777" stroke-dasharray="4 5"/><g class="energy-chip"><path d="M139 103l35-18 46 20-36 20z" fill="url(#energy-${kind})"/><path d="M139 103v12l45 22v-12z" fill="#477c4c"/><path d="M184 125v12l36-20v-12z" fill="#2b6542"/></g><g class="energy-pulse"><path d="M83 94l27-13 24 10m83 29 21-11 31 12" fill="none" stroke="#d8ff87" stroke-width="2.5" stroke-linecap="round"/></g></g><text x="20" y="28" fill="#d4ff8d" font-size="12" font-family="monospace">${name}</text><text x="275" y="35" fill="#a9ce96" font-size="10" font-family="monospace">${symbol}</text><text x="19" y="181" fill="#8fbf8d" font-size="9" font-family="monospace">ILLUSTRATIVE SYSTEM MODEL</text></svg>`;
+}
+
+// Isometric, schematic visualization of the educational TwinTrust telemetry pipeline.
+function twintrustVisual(){
+ return `<svg class="twintrust-scene" viewBox="0 0 360 195" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated schematic of BME280 sensor readings flowing through STM32, MQTT and data-quality dashboard"><defs><linearGradient id="ttchip" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9fde83"/><stop offset="1" stop-color="#356f4b"/></linearGradient></defs><path d="M17 140l158-77 166 64-157 59z" fill="#87b7610a" stroke="#8abf6240"/><g class="tt-float"><path d="M20 97l70-35 64 26-71 38z" fill="#23563c" stroke="#94cc78"/><path d="M20 97v15l63 31v-17z" fill="#123628" stroke="#63875b"/><path d="M83 126v17l71-39V88z" fill="#1b452f" stroke="#63875b"/><path d="M46 96l37-19 40 16-39 21z" fill="url(#ttchip)" stroke="#d8ecb7"/><text x="55" y="98" font-size="9" fill="#183727" font-weight="bold">BME280</text></g><path class="tt-stream" d="M154 107h31l18-22h23" stroke="#d4ff70" stroke-width="2.5" fill="none" stroke-dasharray="5 6"/><g class="tt-float"><path d="M207 60l51-25 61 27-52 27z" fill="#245c3d" stroke="#a5d48a"/><path d="M207 60v32l60 30V89z" fill="#193d29" stroke="#85ab6e"/><path d="M267 89v33l52-28V62z" fill="#2b5940" stroke="#85ab6e"/><text x="238" y="74" font-size="10" fill="#e9ffd3" font-weight="bold">STM32</text></g><path class="tt-stream" d="M265 123v12h-81v11" stroke="#d4ff70" stroke-width="2.5" fill="none" stroke-dasharray="5 6"/><g><rect x="89" y="143" width="175" height="35" rx="5" fill="#12291d" stroke="#a0cf76"/><text x="102" y="155" font-size="8" fill="#d4ff70">MQTT / DATA QUALITY</text><path d="M102 166h18l6-7 7 12 9-10 10 5 11-7 10 7 10-5 14 4 11-8 10 8 13-6" stroke="#b6e879" stroke-width="1.8" fill="none"/></g><text x="20" y="28" font-size="11" fill="#d4ff70" font-family="monospace">TWINTRUST / SENSOR TELEMETRY</text><text x="24" y="48" font-size="8" fill="#a1c395" font-family="monospace">I2C → STM32 → MQTT → CHECKS</text></svg>`;
+}
+
 const grid=document.getElementById('project-grid');
 if(grid){
-function projectCard(p,i){return `<article class="project-card reveal" data-category="${p.type}"><div class="project-visual"><span class="visual-label">${p.label}</span>${['arduino-lab','nfc-attendance'].includes(p.visual)?newProjectVisual(p.visual):p.type==='foundation'?foundationVisual(p.visual):p.type==='peripherals'?peripheralVisual(p.visual):p.type==='drivers'?driverVisual(p.visual):['rtos','protocols'].includes(p.type)?systemProjectVisual(p.id):p.type==='ml'?mlProjectVisual(p.id):visual(p.visual)}<span class="visual-caption">ILLUSTRATIVE ${p.visual==='motion'||p.visual==='thermal'?'SIGNAL':'WORKFLOW'}</span></div><div class="project-body"><span class="project-index">${String(i+1).padStart(2,'0')} / ${p.label}</span><h4>${p.name}</h4><p>${p.description}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><button type="button" data-project="${p.id}" aria-label="Read project notes for ${p.name}">Project notes ↗</button><a href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} repository on GitHub">GitHub ↗</a></div></div></article>`;}
+function projectCard(p,i){return `<article class="project-card reveal" data-category="${p.type}"><div class="project-visual"><span class="visual-label">${p.label}</span>${p.visual==='twintrust'?twintrustVisual():['boost','ev'].includes(p.visual)?energyProjectVisual(p.visual):['arduino-lab','nfc-attendance'].includes(p.visual)?newProjectVisual(p.visual):p.type==='foundation'?foundationVisual(p.visual):p.type==='peripherals'?peripheralVisual(p.visual):p.type==='drivers'?driverVisual(p.visual):['rtos','protocols'].includes(p.type)?systemProjectVisual(p.id):p.type==='ml'?mlProjectVisual(p.id):visual(p.visual)}<span class="visual-caption">ILLUSTRATIVE ${p.visual==='motion'||p.visual==='thermal'?'SIGNAL':'WORKFLOW'}</span></div><div class="project-body"><span class="project-index">${String(i+1).padStart(2,'0')} / ${p.label}</span><h4>${p.name}</h4><p>${p.description}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-links"><button type="button" data-project="${p.id}" aria-label="Read project notes for ${p.name}">Project notes ↗</button>${p.repo?`<a href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} repository on GitHub">GitHub ↗</a>`:`<span class="repo-pending">Repository link pending</span>`}</div></div></article>`;}
 grid.innerHTML=projectGroups.map(group=>{
   const items=projects.filter(p=>p.type===group.id);
   return `<section class="project-group" data-group="${group.id}" aria-labelledby="group-${group.id}"><div class="project-group-heading"><h3 id="group-${group.id}">${group.name}</h3><span>${items.length} project${items.length===1?'':'s'}</span></div><div class="project-grid">${items.map(p=>projectCard(p,projects.indexOf(p))).join('')}</div></section>`;
@@ -664,7 +614,7 @@ grid.addEventListener('click',event=>{
   const button=event.target.closest('[data-project]');if(!button)return;
   const p=projects.find(project=>project.id===button.dataset.project);if(!p)return;
   dialogTrigger=button;
-  document.getElementById('dialog-content').innerHTML=`<h2 class="dialog-content-title" id="dialog-title">${p.name}</h2><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><p class="dialog-intro">${p.description}</p><h3 class="dialog-subheading">PROJECT FOCUS</h3><ul class="dialog-list">${p.focus.map(s=>`<li>${s}</li>`).join('')}</ul><h3 class="dialog-subheading">EXPLORE THE IMPLEMENTATION</h3><p class="dialog-intro">${p.explore}</p><a class="button primary" href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer">Open repository <span aria-hidden="true">↗</span></a><p class="dialog-note">The repository contains the source and documentation. Card graphics illustrate the topic and do not represent measured test results.</p>`;
+  document.getElementById('dialog-content').innerHTML=`<h2 class="dialog-content-title" id="dialog-title">${p.name}</h2><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><p class="dialog-intro">${p.description}</p><h3 class="dialog-subheading">PROJECT FOCUS</h3><ul class="dialog-list">${p.focus.map(s=>`<li>${s}</li>`).join('')}</ul><h3 class="dialog-subheading">EXPLORE THE IMPLEMENTATION</h3><p class="dialog-intro">${p.explore}</p>${p.repo?`<a class="button primary" href="https://github.com/nirzor-deb-25/${p.repo}" target="_blank" rel="noopener noreferrer">Open repository <span aria-hidden="true">↗</span></a>`:`<p class="repo-pending">Repository URL not yet verified.</p>`}<p class="dialog-note">The repository contains the source and documentation. Card graphics illustrate the topic and do not represent measured test results.</p>`;
   dialog.showModal();
 });
 document.getElementById('close-dialog').addEventListener('click',()=>dialog.close());
